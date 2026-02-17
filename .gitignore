@@ -1,0 +1,5 @@
+doacoes_app/doacoes.db
+venv/
+venv311/
+__pycache__/
+*.pyc
