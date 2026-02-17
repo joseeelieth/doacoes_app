@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+
+        <!-- CARD LOGIN / CADASTRO -->
+        <div class="card shadow-lg border-0">
+
+            <div class="card-header bg-success text-white text-center">
+                <h5 class="fw-bold"><i class="bi bi-person-circle"></i> Sistema de Doações</h5>
+            </div>
+
+            <div class="card-body">
+
+                <!-- NAV TABS -->
+                <ul class="nav nav-tabs mb-3" id="authTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button">Login</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button">Cadastrar</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <!-- LOGIN -->
+                    <div class="tab-pane fade show active" id="login">
+                        <form method="POST" action="{{ url_for('login') }}">
+                            <div class="mb-3">
+                                <input name="usuario" class="form-control" placeholder="Usuário" required>
+                            </div>
+                            <div class="mb-3 position-relative">
+                                <input id="loginSenha" type="password" name="senha" class="form-control" placeholder="Senha" required>
+                                <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y pe-3 cursor-pointer" onclick="toggleSenha('loginSenha', this)"></i>
+                            </div>
+
+                            <button class="btn btn-success w-100 mb-2">Entrar</button>
+                            <div class="text-center">
+                                <a href="#" onclick="alert('Funcionalidade de recuperar senha em implementação')" class="small text-muted">Esqueci minha senha</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- CADASTRO -->
+                    <div class="tab-pane fade" id="register">
+                        <form method="POST" action="{{ url_for('register') }}">
+                            <div class="mb-3">
+                                <input name="nome_completo" class="form-control" placeholder="Nome completo" required>
+                            </div>
+                            <div class="mb-3">
+                                <input name="usuario" class="form-control" placeholder="Nome de usuário" required>
+                            </div>
+                            <div class="mb-3">
+                                <input name="email" type="email" class="form-control" placeholder="E-mail" required>
+                            </div>
+                            <div class="mb-3">
+                                <input name="cpf" class="form-control" placeholder="CPF" required>
+                            </div>
+                            <div class="mb-3 position-relative">
+                                <input id="registerSenha" type="password" name="senha" class="form-control" placeholder="Senha" required>
+                                <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y pe-3 cursor-pointer" onclick="toggleSenha('registerSenha', this)"></i>
+                            </div>
+                            <div class="mb-3 position-relative">
+                                <input id="confirmSenha" type="password" name="confirm_senha" class="form-control" placeholder="Confirmar senha" required>
+                                <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y pe-3 cursor-pointer" onclick="toggleSenha('confirmSenha', this)"></i>
+                            </div>
+
+                            <button class="btn btn-success w-100">Cadastrar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT PARA EXIBIR/OCULTAR SENHA -->
+<script>
+function toggleSenha(inputId, icon) {
+    const input = document.getElementById(inputId);
+    if(input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+    } else {
+        input.type = "password";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+    }
+}
+</script>
+
+{% endblock %}

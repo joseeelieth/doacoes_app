@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+<div class="col-lg-6">
+
+<div class="card shadow-lg border-0">
+<div class="card-header bg-success text-white fw-bold">
+<i class="bi bi-box-seam"></i> Cadastro de Doação
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+<div class="mb-3">
+<label class="form-label fw-semibold">Nome do doador</label>
+<input name="nome" class="form-control" placeholder="Digite o nome do doador" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label fw-semibold">Item doado</label>
+<input name="item" class="form-control" placeholder="Ex: Cesta básica, roupas..." required>
+</div>
+
+<div class="row">
+<div class="col-md-6 mb-3">
+<label class="form-label fw-semibold">Quantidade</label>
+<input name="quantidade" type="number" min="1" class="form-control" placeholder="0" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label fw-semibold">Localização</label>
+<input name="localizacao" class="form-control" placeholder="Cidade / Bairro" required>
+</div>
+</div>
+
+<div class="d-grid">
+<button class="btn btn-success btn-lg">
+<i class="bi bi-check-circle"></i> Salvar Doação
+</button>
+</div>
+
+</form>
+
+</div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

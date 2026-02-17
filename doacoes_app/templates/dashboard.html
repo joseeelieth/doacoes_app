@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-success"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h2>
+
+<div class="row g-4 mb-4">
+    <!-- Card Total Doações -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card text-white bg-success shadow-sm h-100">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <h5 class="card-title">Total de Doações</h5>
+                <h2 class="card-text">{{ total_doacoes }}</h2>
+                <i class="bi bi-heart-fill fs-2 mt-2"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Total Itens -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card text-white bg-primary shadow-sm h-100">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <h5 class="card-title">Total de Itens</h5>
+                <h2 class="card-text">{{ total_itens }}</h2>
+                <i class="bi bi-box-seam fs-2 mt-2"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Últimas Doações -->
+<div class="card shadow-sm">
+    <div class="card-header bg-white">
+        <h5 class="mb-0"><i class="bi bi-list-check me-2"></i>Últimas Doações</h5>
+    </div>
+    <div class="card-body p-0">
+        {% if ultimas %}
+        <div class="table-responsive">
+            <table class="table mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                        <th>Localização</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doacao in ultimas %}
+                    <tr>
+                        <td>{{ doacao['id'] }}</td>
+                        <td>{{ doacao['nome'] }}</td>
+                        <td>{{ doacao['item'] }}</td>
+                        <td>{{ doacao['quantidade'] }}</td>
+                        <td>{{ doacao['localizacao'] }}</td>
+                        <td>{{ doacao['data_criacao'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-center p-3 mb-0">Nenhuma doação registrada ainda.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

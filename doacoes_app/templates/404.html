@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column align-items-center justify-content-center fade-slide" style="height: 70vh; opacity:0; transform: translateY(30px); transition: all 0.6s ease;">
+    <h1 class="display-1 text-danger fw-bold">404</h1>
+    <p class="fs-4 text-center mt-3 mb-4">
+        Ops! A página que você tentou acessar não foi encontrada.
+    </p>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-primary shadow-sm">
+        <i class="bi bi-house-door me-1"></i> Voltar para o Dashboard
+    </a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const container = document.querySelector(".fade-slide");
+    setTimeout(() => {
+        container.style.opacity = "1";
+        container.style.transform = "translateY(0)";
+    }, 50);
+});
+</script>
+{% endblock %}
